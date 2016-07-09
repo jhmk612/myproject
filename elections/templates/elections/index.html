@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>병신력 배틀 후보</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/home">홈으로</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="아이디" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="비밀번호" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">로그인</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+<div class="container">
+
+<h2>병신력 배틀에 오신 걸 환영합니다!</h2><br>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td><B>이름</B></td>
+            <td><B>소개</B></td>
+            <td><B>카테고리</B></td>
+            <td><B>기호</B></td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for candidate in candidates%}
+        <tr>
+
+            <td>{{candidate.name}}</td>
+            <td>{{candidate.introduction}}</td>
+            <td>{{candidate.category}}</td>
+            <td>기호 {{candidate.number}}번</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <form action="/vote" ><input type="submit" value="투표하러 가기!"></form>
+    </div>
+</body>
