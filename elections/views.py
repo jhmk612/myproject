@@ -3,9 +3,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Candidate, Poll, Choice
 import datetime
 from django.db.models import Sum
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .forms import LoginForm, JoinForm
+from django.core.context_processors import csrf
 # Create your views here.
 
 def home(request):
@@ -67,13 +70,47 @@ def results(request):
     return render(request, 'elections/result.html', context)
 
 def signup(request):
-    if request.method == "POST":
-        userform = UserCreationForm(request.POST)
-        if userform.is_valid():
-            userform.save()
-            return HttpResponseRedirect(reverse("/signup_ok"))
-    elif request.method == "GET":
-        userform = UserCreationForm()
+    if request.method =='POST':
+        form_data = JoinForm(request.POST)
 
-    return render(request, 'elections/signup.html',{'userform':userform})
+        if form_data.is_valid():
+            username = form_data.cleaned_data['id']
+            password = form_data.cleaned_data['password']
+            User.objects.create_user(username=username, password=password)
 
+            return HttpResponseRedirect('/login')
+    else:
+        form_data=JoinForm()
+
+    context={'join_form':JoinForm()}
+    context.update(csrf(request))
+
+    return render(request, 'elections/signup.html', context)
+
+def login(request):
+
+
+
+
+    return render(request,'elections/login.html')
+
+def login_validate(request):
+    login_form_data=LoginForm(request.POST)
+    if login_form_data.is_valid():
+        user= authenticate(username=login_form_data.cleaned_data['id'], password=login_form_data.cleaned_data['password'])
+        if user is not None:
+            if user.is_active:
+                auth_login(request, user)
+                return HttpResponseRedirect('/home')
+        else:
+            return HttpResponse('사용자가 없거나 비밀번호를 잘못 누르셨습니다.')
+    else:
+        return HttpResponse('로그인 폼이 비정상적입니다.')
+
+def after_login(request):
+    user=User()
+    if request.user.is_authenticated():
+
+        return render(request,'elections/after.html')
+    else:
+        return render(request, 'elections/home.html')

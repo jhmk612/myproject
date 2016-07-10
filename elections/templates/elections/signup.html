@@ -4,12 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>회원가입</title>
+  <title>
+    회원가입
+  </title>
+  <meta charset="utf-8">
 </head>
 <body>
-<form id="signup" method="post" action="/signup_ok">
-    {% csrf_token %}
-    {{userform.as_p}}
+<form action="" method="POST">
+{% csrf_token %}
+{{join_form}}
+
+<input type="submit" value="회원가입" >
+
 </form>
 </body>
 </html>

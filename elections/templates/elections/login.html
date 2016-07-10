@@ -1,88 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="getbootstrap.com/favicon.ico">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>반포고 우리들의 홈페이지</title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
 
-    <!-- Bootstrap core CSS -->
-    <link href="getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/bootstrap3/css/bootstrap.css" rel="stylesheet" />
+    <link href="/static/bootstrap3/css/font-awesome.css" rel="stylesheet" />
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+  <link href="/static/assets/css/get-shit-done.css" rel="stylesheet" />
+    <link href="/static/assets/css/demo.css" rel="stylesheet" />
 
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
+    <!--     Font Awesome     -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
 
+<body>
+ <div id="navbar-full">
+    <div id="navbar">
+    <!--
+        navbar-default can be changed with navbar-ct-blue navbar-ct-azzure navbar-ct-red navbar-ct-green navbar-ct-orange
+        -->
+        <nav class="navbar navbar-ct-blue navbar-fixed-top" role="navigation">
+          <div class="alert alert-success hidden">
+            <div class="container">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+                <b>Lorem ipsum</b> dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            </div>
+          </div>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">반포고</a>
+            </div>
 
-  <body>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Facebook</a></li>
+                <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">메뉴 <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                      </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-toggle="search" class="hidden-xs"><i class="fa fa-search"></i></a>
+                </li>
+              </ul>
+               <form class="navbar-form navbar-left navbar-search-form" role="search">
+                 <div class="form-group">
+                      <input type="text" value="" class="form-control" placeholder="Search...">
+                 </div>
+              </form>
+              <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/signup">회원가입</a></li>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/home">홈으로</a>
-        </div>
-        <!--/.navbar-collapse -->
-      </div>
-    </nav>
-<div class="jumbotron">
-      <div class="container"><br>
-{% if form.errors %}
-<p>ID나 비밀번호가 일치하지 않습니다.</p>
-{% endif %}
+                    <li><a href="/login">로그인</a></li>
+               </ul>
 
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>권한이 없는 페이지에 접근하였으니, 권한이 있는 계정으로 로그인하세요.</p>
-    {% else %}
-    <p>이 페이지를 보려면 로그인을 해야 합니다.</p>
-    {% endif %}
-{% endif %}
-
-<form method="post" action="{% url 'login' %}">
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+<div class="main">
+    <div class="container tim-container" style="max-width:800px; padding-top:100px">
+<form action="/login/validate/" name="login_form"  method="POST">
 {% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
+<div id="inputs">
+            <div class="tim-title">
+                <h3>로그인</h3>
+            </div>
+            <form action="/login/validate/" name="login_form" method="POST">
+{% csrf_token %}
 
-<input type="submit" value="로그인" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
+             <div class="row">
+                    <div class="col-sm-3">
+                  <div class="form-group">
+                    <input type="text" name="id" placeholder ="아이디" class="form-control" />
+                  </div>
+                </div>
+
+            <div class="row">
+                    <div class="col-sm-3">
+                  <div class="form-group">
+                    <input type="password" name="password" placeholder ="비밀번호" class="form-control" />
+                  </div>
+                </div>
 
 
 
 
-       </div>
-    </div>
+                </form>
+
+                <div class="row tim-row" id="display-buttons" data-class="btn-info">
+                    <div class="col-md-3">
+                        <button href="/login/validate" class="btn btn-block btn-lg btn-info">로그인</button>
+                    </div>
+                    </div>
+                    </div>
+
+
+</body>
+
+<script src="/static/jquery/jquery-1.10.2.js" type="text/javascript"></script>
+  <script src="/static/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+
+  <script src="/static/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+  <script src="/static/assets/js/gsdk-checkbox.js"></script>
+  <script src="/static/assets/js/gsdk-radio.js"></script>
+  <script src="/static/assets/js/gsdk-bootstrapswitch.js"></script>
+  <script src="/static/assets/js/get-shit-done.js"></script>
+
+    <script src="/static/assets/js/custom.js"></script>
+
+</html>
+</html>
